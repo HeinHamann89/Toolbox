@@ -1,68 +1,45 @@
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
-    } else {
-      x.className = "topnav";
-    }
-  }
+// Get references to the form and list elements
+const form = document.getElementById("form");
+const list = document.getElementById("list");
 
-// TO DO LIST SECTION //
-// TO DO LIST SECTION //
-// TO DO LIST SECTION //
+// Add a submit event listener to the form
+form.addEventListener("submit", event => {
+  event.preventDefault();
 
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
+  // Get the values of the name and url fields
+  const name = document.getElementById("name").value;
+  const url = document.getElementById("url").value;
 
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
+  // Create a new list item element
+  const listItem = document.createElement("div");
+  listItem.classList.add("list-item");
 
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
+  // Create a span element to display the name
+  const nameSpan = document.createElement("span");
+  nameSpan.textContent = name;
+  listItem.appendChild(nameSpan);
 
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
+  // Create a link element to display the url
+  const urlLink = document.createElement("a");
+  urlLink.href = url;
+  urlLink.textContent = url;
+  listItem.appendChild(urlLink);
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
+  // Create a delete button
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete-button");
+  deleteButton.textContent = "Delete";
+  listItem.appendChild(deleteButton);
 
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
+  // Add a click event listener to the delete button
+  deleteButton.addEventListener("click", () => {
+    list.removeChild(listItem);
+  });
+
+  // Append the list item to the list
+  list.appendChild(listItem);
+
+  // Clear the form fields
+  document.getElementById("name").value = "";
+  document.getElementById("url").value = "";
+});
