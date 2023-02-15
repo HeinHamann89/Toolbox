@@ -3,35 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <title>Document</title>
 </head>
 <body>
-    <div class="topnav" id="myTopnav">
-        <a href="#home" class="active">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-          <i class="fa fa-bars"></i>
-        </a>
-      </div>
-      
-      <div class="hero-info">
-        <h2>Welcome,</h2>
-        <a href="#">Get 15% discount on all Focus Group services today ></a>
-      </div>
 
-      <div id="myDIV" class="header">
-        <h2>Add your tools here</h2>
-        <input type="text" id="myInput" placeholder="Title...">
-        <span onclick="newElement()" class="addBtn">Add</span>
-      </div>
-      
-      <ul id="myUL">
-      </ul>
+    <div class="promo-banner">
+        <a href="#" class="promo-content">Click here to learn more about this deal</a>
+    </div>
+    <h1>Toolbox</h1>
+    <form id="form">
+        <label for="name">Tool name:&nbsp;</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="url">&nbsp;Link:&nbsp;</label>
+        <input type="text" id="url" name="url"><br>
+        <button type="submit" class="add-button">Add</button>
+      </form>
+    
+      <div id="list"></div>
+      <script src="script.js"></script>
 </body>
 </html>
